@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produk - SweetBox</title>
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='none'><rect x='4' y='8' width='24' height='16' rx='4' fill='%23FFD1DC'/><path d='M4 8C4 5.79086 5.79086 4 8 4H24C26.2091 4 28 5.79086 28 8V10H4V8Z' fill='%23F8BBD0'/><rect x='14' y='4' width='4' height='24' fill='%23A7D9E3'/><rect x='4' y='14' width='24' height='4' fill='%23A7D9E3'/><path d='M16 12L19 9L16 6L13 9L16 12Z' fill='%23A7D9E3'/></svg>" type="image/svg+xml">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/products.css">
+</head>
+<body>
+
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">SweetBox</a>
+            <nav class="desktop-nav">
+                <ul data-translate-key="nav">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="products.html" class="nav-link active">Product</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                </ul>
+            </nav>
+            <div class="header-icons">
+                <a href="checkout.html" class="cart-icon" aria-label="Shopping Cart">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-badge">0</span>
+                </a>
+                <button class="hamburger-menu" id="hamburger-menu" aria-label="Open menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <nav class="mobile-nav" id="mobile-nav">
+        <ul data-translate-key="navMobile">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Product</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="checkout.html">Shopping Cart</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="product-page">
+            <div class="container page-layout">
+                <aside class="filters">
+                    <div class="filter-group">
+                        <h3 data-translate-key="filterTitle">Filter Produk</h3>
+                        <input type="text" id="search-box" placeholder="Cari dessert...">
+                    </div>
+                    <div class="filter-group">
+                        <h3 data-translate-key="sortTitle">Urutkan</h3>
+                        <select id="sort-filter">
+                            <option value="default" data-translate-key="sortDefault">Default</option>
+                            <option value="price-asc" data-translate-key="sortPriceAsc">Harga Terendah</option>
+                            <option value="price-desc" data-translate-key="sortPriceDesc">Harga Tertinggi</option>
+                            <option value="calories-asc" data-translate-key="sortCalAsc">Kalori Terendah</option>
+                            <option value="calories-desc" data-translate-key="sortCalDesc">Kalori Tertinggi</option>
+                            <option value="rating-desc" data-translate-key="sortRatingDesc">Bintang Tertinggi</option>
+                            <option value="rating-asc" data-translate-key="sortRatingAsc">Bintang Terendah</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <h3 data-translate-key="cityTitle">Kota</h3>
+                        <select id="city-filter" class="city-select">
+                            <option value="all" data-translate-key="allCities">Semua Kota</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <h3 data-translate-key="priceRangeTitle">Range Harga (Rp)</h3>
+                        <div class="price-range">
+                           <input type="number" id="min-price" placeholder="Min" min="0">
+                           <span>-</span>
+                           <input type="number" id="max-price" placeholder="Maks" min="0">
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <h3 data-translate-key="ratingTitle">Rating</h3>
+                        <div class="rating-filter" id="rating-filter">
+                            <span data-rating="1">★</span>
+                            <span data-rating="2">★</span>
+                            <span data-rating="3">★</span>
+                            <span data-rating="4">★</span>
+                            <span data-rating="5">★</span>
+                        </div>
+                    </div>
+                </aside>
+                <div class="product-list">
+                    <h2 data-translate-key="productPageTitle">Pilihan Dessert Terbaik</h2>
+                    <p class="section-subtitle" data-translate-key="productPageSubtitle">Temukan hidangan penutup favorit Anda dari berbagai kota di Indonesia.</p>
+                    <div class="product-grid" id="product-grid">
+                        <!-- Produk akan dirender di sini oleh JS -->
+                    </div>
+                    <div id="no-results">
+                        <h3 data-translate-key="noResultsTitle">Oops! Produk tidak ditemukan.</h3>
+                        <p data-translate-key="noResultsSubtitle">Coba ubah kata kunci pencarian atau filter Anda.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-col">
+                <h4 class="footer-logo">SweetBox</h4>
+                <p data-translate-key="footerDesc">Membawa kelezatan dessert khas nusantara langsung ke depan pintu Anda. Kualitas dan rasa otentik adalah prioritas kami.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Tiktok"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4 data-translate-key="footerMenu">Menu</h4>
+                <ul data-translate-key="footerNav">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Product</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="checkout.html">Shopping Cart</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 data-translate-key="footerContact">Contact</h4>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Jl. Rambutan Blok N No.9, Penggilingan, Cakung, Kota Jakarta Timur, DKI Jakarta 13940</li>
+                    <li><i class="fas fa-phone"></i> +628 23 2053 8422</li>
+                    <li><i class="fas fa-envelope"></i> halo@sweetbox.com</li>
+                </ul>
+                 <a href="mailto:kritikdansaran@sweetbox.com" class="btn-saran" data-translate-key="sendFeedback">Kirim Kritik & Saran</a>
+            </div>
+            <div class="footer-col">
+                <h4 data-translate-key="footerLocation">Lokasi Kami</h4>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d991.5977937402661!2d106.9355694283832!3d-6.19991206659103!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e698b69deb4ac43%3A0xb0514e6b3e06915d!2sJl.%20Rambutan%20Blok%20N%20No.9%2C%20RT.19%2FRW.7%2C%20Penggilingan%2C%20Kec.%20Cakung%2C%20Kota%20Jakarta%20Timur%2C%20Daerah%20Khusus%20Ibukota%20Jakarta%2013940!5e0!3m2!1sid!2sid!4v1727716488344!5m2!1sid!2sid" width="100%" height="150" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 SweetBox. <span data-translate-key="rightsReserved">Semua Hak Cipta Dilindungi.</span></p>
+        </div>
+    </footer>
+    
+    <div id="notification" class="notification"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="js/products-data.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/products.js"></script>
+</body>
+</html>

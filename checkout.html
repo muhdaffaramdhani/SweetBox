@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - SweetBox</title>
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='none'><rect x='4' y='8' width='24' height='16' rx='4' fill='%23FFD1DC'/><path d='M4 8C4 5.79086 5.79086 4 8 4H24C26.2091 4 28 5.79086 28 8V10H4V8Z' fill='%23F8BBD0'/><rect x='14' y='4' width='4' height='24' fill='%23A7D9E3'/><rect x='4' y='14' width='24' height='4' fill='%23A7D9E3'/><path d='M16 12L19 9L16 6L13 9L16 12Z' fill='%23A7D9E3'/></svg>" type="image/svg+xml">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/checkout.css">
+</head>
+<body>
+
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">SweetBox</a>
+            <nav class="desktop-nav">
+                <ul data-translate-key="nav">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="products.html" class="nav-link">Product</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                </ul>
+            </nav>
+            <div class="header-icons">
+                <a href="checkout.html" class="cart-icon" aria-label="Shopping Cart">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-badge">0</span>
+                </a>
+                <button class="hamburger-menu" id="hamburger-menu" aria-label="Open menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <nav class="mobile-nav" id="mobile-nav">
+        <ul data-translate-key="navMobile">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Product</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="checkout.html">Shopping Cart</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="checkout-page">
+            <div class="container">
+                <h2 data-translate-key="cartTitle">Keranjang Belanja Anda</h2>
+                <div class="checkout-layout">
+                    <div class="cart-items">
+                        <div id="cart-items-container">
+                            <!-- Item keranjang akan dirender di sini oleh checkout.js -->
+                        </div>
+                        <div id="empty-cart-message" class="hidden">
+                            <h3 data-translate-key="emptyCartTitle">Keranjang Anda masih kosong.</h3>
+                            <p data-translate-key="emptyCartSubtitle">Ayo temukan dessert favoritmu!</p>
+                            <a href="products.html" class="btn" style="margin-top: 20px;" data-translate-key="startShopping">Mulai Belanja</a>
+                        </div>
+                         <div id="suggested-products" class="suggested-products">
+                            <h3 data-translate-key="suggestedTitle">Mungkin Anda juga Suka</h3>
+                            <div class="suggested-grid" id="suggested-grid">
+                                <!-- Suggested products rendered here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="order-summary hidden" id="order-summary">
+                        <h3 data-translate-key="summaryTitle">Ringkasan Pesanan</h3>
+                        
+                        <form id="checkout-form">
+                             <div class="form-group">
+                                <label for="address" data-translate-key="addressLabel">Alamat Lengkap</label>
+                                <textarea id="address" rows="3" required placeholder="Masukkan alamat Anda"></textarea>
+                                <button type="button" id="use-gps-btn" class="btn-link">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span data-translate-key="useGPS">Gunakan Lokasi Saat Ini</span>
+                                </button>
+                                <div id="distance-info" class="distance-info"></div>
+                            </div>
+
+                            <div class="delivery-options">
+                                <h4 data-translate-key="deliveryOptionTitle">Opsi Pengiriman</h4>
+                                <label>
+                                    <input type="radio" name="delivery" value="delivery" checked>
+                                    <i class="fas fa-truck"></i> <span data-translate-key="delivery">Delivery</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="delivery" value="pickup">
+                                    <i class="fas fa-store"></i> <span data-translate-key="pickup">Pick Up</span>
+                                </label>
+                            </div>
+                            
+                            <div class="summary-details">
+                                <p><span data-translate-key="subtotal">Subtotal</span> <span id="summary-subtotal">Rp 0</span></p>
+                                <p><span data-translate-key="shippingFee">Biaya Pengiriman</span> <span id="summary-shipping">Rp 0</span></p>
+                                <p><span data-translate-key="tax">Pajak (11%)</span> <span id="summary-tax">Rp 0</span></p>
+                                <hr>
+                                <p class="summary-total"><span data-translate-key="total">Total</span> <span id="summary-total">Rp 0</span></p>
+                            </div>
+
+                            <h3>Data Pengiriman</h3>
+                            <div class="form-group">
+                                <label for="name" data-translate-key="nameLabel">Nama Lengkap</label>
+                                <input type="text" id="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" data-translate-key="phoneLabel">Nomor Telepon</label>
+                                <input type="tel" id="phone" required>
+                            </div>
+                            
+                             <div class="payment-options">
+                                <h4 data-translate-key="paymentMethodTitle">Metode Pembayaran</h4>
+                                <div class="payment-methods">
+                                    <label>
+                                        <input type="radio" name="payment" value="cod" checked>
+                                        <span><i class="fas fa-money-bill-wave"></i> COD</span>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="payment" value="transfer">
+                                        <span><i class="fas fa-university"></i> Transfer</span>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="payment" value="ewallet">
+                                       <span><i class="fas fa-wallet"></i> E-Wallet</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-full" data-translate-key="orderNow">Pesan Sekarang</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-col">
+                <h4 class="footer-logo">SweetBox</h4>
+                <p data-translate-key="footerDesc">Membawa kelezatan dessert khas nusantara langsung ke depan pintu Anda. Kualitas dan rasa otentik adalah prioritas kami.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Tiktok"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4 data-translate-key="footerMenu">Menu</h4>
+                <ul data-translate-key="footerNav">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Product</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="checkout.html">Shopping Cart</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 data-translate-key="footerContact">Contact</h4>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Jl. Rambutan Blok N No.9, Penggilingan, Cakung, Kota Jakarta Timur, DKI Jakarta 13940</li>
+                    <li><i class="fas fa-phone"></i> +628 23 2053 8422</li>
+                    <li><i class="fas fa-envelope"></i> halo@sweetbox.com</li>
+                </ul>
+                 <a href="mailto:kritikdansaran@sweetbox.com" class="btn-saran" data-translate-key="sendFeedback">Kirim Kritik & Saran</a>
+            </div>
+            <div class="footer-col">
+                <h4 data-translate-key="footerLocation">Lokasi Kami</h4>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d991.5977937402661!2d106.9355694283832!3d-6.19991206659103!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e698b69deb4ac43%3A0xb0514e6b3e06915d!2sJl.%20Rambutan%20Blok%20N%20No.9%2C%20RT.19%2FRW.7%2C%20Penggilingan%2C%20Kec.%20Cakung%2C%20Kota%20Jakarta%20Timur%2C%20Daerah%20Khusus%20Ibukota%20Jakarta%2013940!5e0!3m2!1sid!2sid!4v1727716488344!5m2!1sid!2sid" width="100%" height="150" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 SweetBox. <span data-translate-key="rightsReserved">Semua Hak Cipta Dilindungi.</span></p>
+        </div>
+    </footer>
+    
+    <div id="confirm-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <h4 data-translate-key="confirmTitle">Konfirmasi</h4>
+            <p id="modal-message" data-translate-key="confirmDelete">Apakah Anda yakin ingin menghapus item ini dari keranjang?</p>
+            <div class="modal-actions">
+                <button id="modal-cancel-btn" class="btn btn-secondary" data-translate-key="cancel">Batal</button>
+                <button id="modal-confirm-btn" class="btn" data-translate-key="confirm">Yakin</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="order-success-modal" class="modal-overlay hidden">
+        <div class="modal-content receipt">
+            <div id="receipt-content">
+                <i class="fas fa-check-circle success-icon"></i>
+                <h2 data-translate-key="orderSuccessTitle">Pesanan Berhasil!</h2>
+                <p data-translate-key="orderSuccessSubtitle">Terima kasih telah berbelanja di SweetBox.</p>
+                <div class="receipt-details">
+                    <h4>Detail Pesanan</h4>
+                    <p><strong>ID Pesanan:</strong> <span id="receipt-id"></span></p>
+                    <p><strong>Tanggal:</strong> <span id="receipt-date"></span></p>
+                    <div id="receipt-items"></div>
+                    <hr>
+                    <div id="receipt-summary"></div>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button id="download-receipt-btn" class="btn"><i class="fas fa-download"></i> <span data-translate-key="downloadReceipt">Unduh Struk</span></button>
+                <button id="close-receipt-btn" class="btn btn-secondary"><span data-translate-key="close">Tutup</span></button>
+            </div>
+        </div>
+    </div>
+
+    <div id="notification" class="notification"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="js/products-data.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/checkout.js"></script>
+</body>
+</html>

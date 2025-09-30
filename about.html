@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Kami - SweetBox</title>
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='none'><rect x='4' y='8' width='24' height='16' rx='4' fill='%23FFD1DC'/><path d='M4 8C4 5.79086 5.79086 4 8 4H24C26.2091 4 28 5.79086 28 8V10H4V8Z' fill='%23F8BBD0'/><rect x='14' y='4' width='4' height='24' fill='%23A7D9E3'/><rect x='4' y='14' width='24' height='4' fill='%23A7D9E3'/><path d='M16 12L19 9L16 6L13 9L16 12Z' fill='%23A7D9E3'/></svg>" type="image/svg+xml">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/about.css">
+</head>
+<body>
+
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">SweetBox</a>
+            <nav class="desktop-nav">
+                <ul data-translate-key="nav">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="products.html" class="nav-link">Product</a></li>
+                    <li><a href="about.html" class="nav-link active">About</a></li>
+                </ul>
+            </nav>
+            <div class="header-icons">
+                <a href="checkout.html" class="cart-icon" aria-label="Shopping Cart">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-badge">0</span>
+                </a>
+                <button class="hamburger-menu" id="hamburger-menu" aria-label="Open menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <nav class="mobile-nav" id="mobile-nav">
+        <ul data-translate-key="navMobile">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Product</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="checkout.html">Shopping Cart</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="about-hero">
+            <div class="container">
+                <h1 data-translate-key="aboutHeroTitle">Menghubungkan Rasa, Menyatukan Nusantara</h1>
+                <p data-translate-key="aboutHeroSubtitle">Lebih dari sekadar dessert, kami membawa cerita dan tradisi dari setiap daerah ke meja Anda.</p>
+            </div>
+        </section>
+
+        <section id="our-story">
+            <div class="container story-container">
+                <div class="story-image">
+                    <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=1964&auto=format&fit=crop" alt="Proses membuat dessert" loading="lazy">
+                </div>
+                <div class="story-content">
+                    <h2 data-translate-key="ourStoryTitle">Cerita Kami</h2>
+                    <p data-translate-key="ourStoryPara1">SweetBox lahir dari kecintaan kami terhadap kekayaan kuliner Indonesia, khususnya hidangan penutup yang seringkali menjadi primadona tersembunyi. Kami percaya bahwa setiap kue, setiap gigitan manis, memiliki cerita unik tentang asal-usul, budaya, dan kehangatan tangan pembuatnya.</p>
+                    <p data-translate-key="ourStoryPara2">Misi kami sederhana: membuatnya mudah bagi Anda untuk menemukan dan menikmati kelezatan otentik ini, tidak peduli di mana Anda berada. Kami bekerja sama langsung dengan para pengrajin dessert lokal terbaik untuk memastikan setiap produk yang sampai ke tangan Anda adalah yang berkualitas tertinggi.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="our-team">
+            <div class="container">
+                <h2 data-translate-key="ourTeamTitle">Tim Hebat di Balik SweetBox</h2>
+                <p class="section-subtitle" data-translate-key="ourTeamSubtitle">Kami adalah sekelompok pencinta kuliner yang bersemangat untuk berbagi kebahagiaan manis.</p>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="team-initials">DR</div>
+                        <h4>Daffa Ramdhani</h4>
+                        <p>Founder & CEO</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-initials">JR</div>
+                        <h4>Juna Rorimpandey</h4>
+                        <p>Head of Culinary</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-initials">FN</div>
+                        <h4>Farida Nurhan</h4>
+                        <p>Operations Manager</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-col">
+                <h4 class="footer-logo">SweetBox</h4>
+                <p data-translate-key="footerDesc">Membawa kelezatan dessert khas nusantara langsung ke depan pintu Anda. Kualitas dan rasa otentik adalah prioritas kami.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Tiktok"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4 data-translate-key="footerMenu">Menu</h4>
+                <ul data-translate-key="footerNav">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Product</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="checkout.html">Shopping Cart</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 data-translate-key="footerContact">Contact</h4>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Jl. Rambutan Blok N No.9, Penggilingan, Cakung, Kota Jakarta Timur, DKI Jakarta 13940</li>
+                    <li><i class="fas fa-phone"></i> +628 23 2053 8422</li>
+                    <li><i class="fas fa-envelope"></i> halo@sweetbox.com</li>
+                </ul>
+                 <a href="mailto:kritikdansaran@sweetbox.com" class="btn-saran" data-translate-key="sendFeedback">Kirim Kritik & Saran</a>
+            </div>
+            <div class="footer-col">
+                <h4 data-translate-key="footerLocation">Lokasi Kami</h4>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d991.5977937402661!2d106.9355694283832!3d-6.19991206659103!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e698b69deb4ac43%3A0xb0514e6b3e06915d!2sJl.%20Rambutan%20Blok%20N%20No.9%2C%20RT.19%2FRW.7%2C%20Penggilingan%2C%20Kec.%20Cakung%2C%20Kota%20Jakarta%20Timur%2C%20Daerah%20Khusus%20Ibukota%20Jakarta%2013940!5e0!3m2!1sid!2sid!4v1727716488344!5m2!1sid!2sid" width="100%" height="150" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 SweetBox. <span data-translate-key="rightsReserved">Semua Hak Cipta Dilindungi.</span></p>
+        </div>
+    </footer>
+
+    <script src="js/products-data.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
